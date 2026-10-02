@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+  <title>Home page</title>
+{% endblock %}
+{% block content %}
+  <h1>Game Manager</h1>
+  <p>Welcome to Dungeons & Dragons Game Manager</p>
+  <h3>Game Manager statistic:</h3>
+  <ul>
+    <li>Number of players: {{ players_num }}</li>
+    <li>Number of masters: {{ masters_num }}</li>
+    <li>Number of adventures: {{ adventures_num }}</li>
+  </ul>
+{#  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>#}
+{% endblock %}

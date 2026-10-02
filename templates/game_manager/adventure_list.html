@@ -1,0 +1,19 @@
+{% extends "base.html"%}
+
+{% block content %}
+  <h1>Adventure List</h1>
+
+{#  <form method="get" action="" class="form-inline">#}
+{#    {{ search_form.as_p }}#}
+{#    <input class="btn btn-secondary" type="submit" value="Search">#}
+{#  </form>#}
+  {% if adventure_list %}
+    <ul>
+      {% for adventure in adventure_list %}
+        <li><a href="#">{{ adventure.name }} {{ adventure.parameter }}, {{ adventure.start_date }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no Adventures in Game Manager</p>
+  {% endif %}
+{% endblock %}
