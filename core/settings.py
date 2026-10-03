@@ -130,3 +130,4 @@ MAILERS = {
 
 AUTH_USER_MODEL = "game_manager.User"
 
+LOGIN_REDIRECT_URL = "/"

@@ -84,7 +84,7 @@ class Adventure(models.Model):
         max_length=8,
         choices=Difficulty.choices
     )
-    parameter = models.ForeignKey(
+    adventure_setting = models.ForeignKey(
         AdventureSettings,
         on_delete=models.PROTECT,
         related_name="adventures"
