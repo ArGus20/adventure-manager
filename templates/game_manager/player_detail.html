@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ player.username }}</h1>
+  <p>First name: {{ player.first_name }}</p>
+  <p>Last name: {{ player.last_name }}</p>
+  <ul>
+    <h3>Characters:</h3>
+    {% for character in player.characters.all %}
+      <li><a href="{% url 'game_manager:character-detail' player_pk=player.id pk=character.id %}">{{ character.character_name }} {{ character.character_class }}</a></li>
+    {% empty %}
+      <p>No Characters!</p>
+    {% endfor %}
+  </ul>
+{% endblock %}

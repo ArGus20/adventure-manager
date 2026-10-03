@@ -1,5 +1,6 @@
 from django.urls import path
 
+from .models import Character
 from .views import (
     HomePageView,
     AdventureListView,
@@ -7,6 +8,11 @@ from .views import (
     AdventureCreateView,
     AdventureUpdateView,
     AdventureDeleteView,
+    MasterListView,
+    PlayerListView,
+    MasterDetailView,
+    PlayerDetailView,
+    CharacterDetailView
 )
 
 urlpatterns = [
@@ -18,14 +24,12 @@ urlpatterns = [
     path("adventures/<int:pk>/update/", AdventureUpdateView.as_view(), name="adventure-update"),
     path("adventures/<int:pk>/delete/", AdventureDeleteView.as_view(), name="adventure-delete"),
 
+    path("masters/", MasterListView.as_view(), name="master-list"),
+    path("masters/<int:pk>/", MasterDetailView.as_view(), name="master-detail"),
+    path("players/", PlayerListView.as_view(), name="player-list"),
+    path("players/<int:pk>/", PlayerDetailView.as_view(), name="player-detail"),
+    path("players/<int:player_pk>/character/<int:pk>", CharacterDetailView.as_view(), name="character-detail"),
+
 ]
 
 app_name = "game_manager"
-
-# path("classes/", CharacterClassListView.as_view(), name="character-class-list"),
-#
-#
-# class CharacterClassListView(generic.ListView):
-#     model = CharacterClass
-#     template_name = "game_manager/character_class_list.html"
-#     context_object_name = "character_class_list"

@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views import generic
 
-from game_manager.models import User, Adventure, CharacterClass
+from game_manager.models import User, Adventure, CharacterClass, Character
 
 
 class HomePageView(TemplateView):
@@ -68,6 +68,38 @@ class AdventureDeleteView(generic.DeleteView):
     template_name = "game_manager/adventure_contifm_delete.html"
 
 
+class MasterListView(generic.ListView):
+    model = User
+    queryset = User.objects.filter(is_dm=True)
+    template_name = "game_manager/master_list.html"
+    context_object_name = "master_list"
 
 
+class MasterDetailView(generic.DetailView):
+    model = User
+    template_name = "game_manager/master_detail.html"
+    context_object_name = "master"
+
+
+class PlayerListView(generic.ListView):
+    model = User
+    queryset = User.objects.filter(is_dm=False)
+    template_name = "game_manager/player_list.html"
+    context_object_name = "player_list"
+
+
+class PlayerDetailView(generic.DetailView):
+    model = User
+    template_name = "game_manager/player_detail.html"
+    context_object_name = "player"
+
+class CharacterDetailView(generic.DetailView):
+    model = Character
+    queryset = Character.objects.select_related(
+        "user",
+        "race",
+        "character_class"
+    )
+    template_name = "game_manager/character_detail.html"
+    context_object_name = "character"
 

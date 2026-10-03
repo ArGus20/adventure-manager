@@ -626,7 +626,7 @@
       "added_date": "2026-09-01",
       "start_date": "2026-10-15",
       "difficulty": "high",
-      "parameter": 2,
+      "adventure_setting": 2,
       "master": 1,
       "players": [2, 3, 4, 5]
     }
@@ -640,7 +640,7 @@
       "added_date": "2026-09-05",
       "start_date": "2026-10-20",
       "difficulty": "low",
-      "parameter": 1,
+      "adventure_setting": 1,
       "master": 1,
       "players": [6, 7, 8, 9]
     }
@@ -654,8 +654,8 @@
       "added_date": "2026-09-10",
       "start_date": "2026-11-01",
       "difficulty": "high",
-      "parameter": 1,
-      "master": 1,
+      "adventure_setting": 1,
+      "master": 2,
       "players": [10, 11, 12, 13]
     }
   },
@@ -668,8 +668,8 @@
       "added_date": "2026-09-12",
       "start_date": "2026-11-10",
       "difficulty": "low",
-      "parameter": 1,
-      "master": 1,
+      "adventure_setting": 1,
+      "master": 2,
       "players": [14, 15, 16, 2]
     }
   },
@@ -682,8 +682,8 @@
       "added_date": "2026-09-18",
       "start_date": "2026-11-20",
       "difficulty": "moderate",
-      "parameter": 1,
-      "master": 1,
+      "adventure_setting": 1,
+      "master": 2,
       "players": [3, 4, 7, 10]
     }
   },
@@ -696,8 +696,8 @@
       "added_date": "2026-09-22",
       "start_date": "2026-12-01",
       "difficulty": "high",
-      "parameter": 1,
-      "master": 1,
+      "adventure_setting": 1,
+      "master": 3,
       "players": [5, 6, 8, 12]
     }
   },
@@ -710,8 +710,8 @@
       "added_date": "2026-09-25",
       "start_date": "2026-12-15",
       "difficulty": "moderate",
-      "parameter": 4,
-      "master": 1,
+      "adventure_setting": 4,
+      "master": 3,
       "players": [9, 11, 14, 16]
     }
   }

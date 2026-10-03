@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ character.character_name }} ({{ character.user.username }})</h1>
+  <p>Gender: {{ character.gender }}</p>
+  <p>Race: {{ character.race }}</p>
+  <p>Class: {{ character.character_class }}</p>
+  <p>{{ character.character_class.description }}</p>
+{% endblock %}

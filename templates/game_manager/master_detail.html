@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ master.username }}</h1>
+  <p>First name: {{ master.first_name }}</p>
+  <p>Last name: {{ master.last_name }}</p>
+  <ul>
+    <h3>Adventures:</h3>
+    {% for adv in master.mastered_adventures.all %}
+      <li><a href="{% url 'game_manager:adventure-detail' pk=adv.id %}">{{ adv.name }}</a></li>
+    {% empty %}
+      <p>No Adventures!</p>
+    {% endfor %}
+  </ul>
+{% endblock %}

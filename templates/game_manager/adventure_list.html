@@ -10,7 +10,7 @@
   {% if adventure_list %}
     <ul>
       {% for adventure in adventure_list %}
-        <li><a href="#">{{ adventure.name }} {{ adventure.adventure_setting }}, {{ adventure.start_date }}</a></li>
+        <li><a href="{% url 'game_manager:adventure-detail' pk=adventure.id %}">{{ adventure.name }} {{ adventure.adventure_setting }}, {{ adventure.start_date }}</a></li>
       {% endfor %}
     </ul>
   {% else %}
