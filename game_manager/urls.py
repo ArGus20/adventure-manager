@@ -20,7 +20,7 @@ urlpatterns = [
 
     path("adventures/", AdventureListView.as_view(), name="adventure-list"),
     path("adventures/<int:pk>/", AdventureDetailView.as_view(), name="adventure-detail"),
-    path("adventures/create/", AdventureCreateView.as_view(), name="adventure-detail"),
+    path("adventures/create/", AdventureCreateView.as_view(), name="adventure-create"),
     path("adventures/<int:pk>/update/", AdventureUpdateView.as_view(), name="adventure-update"),
     path("adventures/<int:pk>/delete/", AdventureDeleteView.as_view(), name="adventure-delete"),
 

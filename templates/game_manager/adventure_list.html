@@ -1,7 +1,14 @@
 {% extends "base.html"%}
 
 {% block content %}
-  <h1>Adventure List</h1>
+  <h1>
+    Adventure List
+    {% if user.is_dm %}
+    <a href="{% url 'game_manager:adventure-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+    {% endif %}
+  </h1>
 
 {#  <form method="get" action="" class="form-inline">#}
 {#    {{ search_form.as_p }}#}

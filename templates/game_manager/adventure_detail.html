@@ -3,21 +3,9 @@
 {% block content %}
   <h1>{{ adventure.name }} (started at {{ adventure.start_date }})</h1>
   <p>Description: {{ adventure.description }}</p>
+  <p>Difficulty: {{ adventure.difficulty }}</p>
   <hr>
   <h3>Master: {{ adventure.master.username }}</h3>
-{#  {% if user == adventure.master %}#}
-{#    <form method="post">#}
-{#      {% csrf_token %}#}
-{#      <p>Add players to this adventure:</p>#}
-{#      <select name="player_ids" id="player_ids" multiple size="5">#}
-{#        {% for u in all_users %}#}
-{#          <option value="{{ u.id }}">{{ u.username }}</option>#}
-{#        {% endfor %}#}
-{#      </select>#}
-{#      <br>#}
-{#      <button type="submit">Add</button>#}
-{#    </form>#}
-{#  {% endif %}#}
   <h3>Players:</h3>
   <ul>
     {% for player in adventure.players.all %}
@@ -26,4 +14,8 @@
       <li>No players in this adventure yet.</li>
     {% endfor %}
   </ul>
+  {% if user == adventure.master %}
+    <a href="{% url 'game_manager:adventure-update' pk=adventure.id %}">UPDATE</a>
+    <a href="{% url 'game_manager:adventure-delete' pk=adventure.id %}">DELETE</a>
+  {% endif %}
 {% endblock %}

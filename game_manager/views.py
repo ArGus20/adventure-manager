@@ -1,9 +1,11 @@
 from typing import Any
 
+from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views import generic
 
+from game_manager.forms import AdventureCreateForm
 from game_manager.models import User, Adventure, CharacterClass, Character
 
 
@@ -50,21 +52,25 @@ class AdventureDetailView(generic.DetailView):
 
 class AdventureCreateView(generic.CreateView):
     model = Adventure
-    fields = "__all__"
-    success_url = reverse_lazy("game_manager:adventure_list")
+    form_class = AdventureCreateForm
+    success_url = reverse_lazy("game_manager:adventure-list")
     template_name = "game_manager/adventure_form.html"
+
+    def form_valid(self, form) -> HttpResponse:
+        form.instance.master = self.request.user
+        return super().form_valid(form)
 
 
 class AdventureUpdateView(generic.UpdateView):
     model = Adventure
-    fields = "__all__"
-    success_url = reverse_lazy("game_manager:adventure_list")
+    form_class = AdventureCreateForm
+    success_url = reverse_lazy("game_manager:adventure-list")
     template_name = "game_manager/adventure_form.html"
 
 
 class AdventureDeleteView(generic.DeleteView):
     model = Adventure
-    success_url = reverse_lazy("game_manager:adventure_list")
+    success_url = reverse_lazy("game_manager:adventure-list")
     template_name = "game_manager/adventure_contifm_delete.html"
 
 

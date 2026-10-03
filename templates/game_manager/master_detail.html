@@ -4,6 +4,7 @@
   <h1>{{ master.username }}</h1>
   <p>First name: {{ master.first_name }}</p>
   <p>Last name: {{ master.last_name }}</p>
+  <p>Email: {{ master.email }}</p>
   <ul>
     <h3>Adventures:</h3>
     {% for adv in master.mastered_adventures.all %}
