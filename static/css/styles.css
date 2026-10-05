@@ -1,8 +1,109 @@
-body {
-    margin-top: 20px;
+:root {
+--bg-primary: #12141a;
+--bg-card: #1c212d;
+--bg-hover: #262c3d;
+--border-color: #2b3244;
+--text-primary: #f0f2f5;
+--accent-gold: #f59e0b;
 }
 
-.sidebar-nav {
-    padding: 0;
-    list-style: none;
+body {
+background-color: var(--bg-primary);
+color: var(--text-primary);
+}
+
+/* STREAMING_CHUNK:Styling navigation and dark cards */
+.custom-dark-nav {
+background-color: var(--bg-card);
+border-bottom: 1px solid var(--border-color);
+}
+
+.custom-dark-card {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+color: var(--text-primary);
+}
+
+.custom-dark-card:hover {
+background-color: var(--bg-hover);
+border-color: var(--accent-gold);
+color: var(--text-primary);
+}
+
+/* STREAMING_CHUNK:Styling form controls */
+.form-inline input[type="text"] {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+color: var(--text-primary);
+border-radius: 4px;
+padding: 6px 12px;
+}
+
+/* STREAMING_CHUNK:Configuring full clickable hit-areas for buttons and controls */
+.btn,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+.page-link,
+.nav-link,
+.list-group-item-action {
+cursor: pointer;
+user-select: none;
+}
+
+.btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+
+.nav-link {
+display: block;
+width: 100%;
+height: 100%;
+}
+
+.page-link {
+display: block;
+width: 100%;
+height: 100%;
+}
+
+a.list-group-item,
+a.list-group-item-action {
+display: block;
+width: 100%;
+}
+
+.list-group-item a.text-reset {
+display: flex;
+align-items: center;
+flex-grow: 1;
+align-self: stretch;
+margin: -0.75rem 0 -0.75rem -1.25rem;
+padding: 0.75rem 1.25rem;
+cursor: pointer;
+}
+
+/* STREAMING_CHUNK:Styling Bootstrap pagination for dark theme */
+.pagination .page-link {
+background-color: var(--bg-card);
+border-color: var(--border-color);
+color: var(--text-primary);
+white-space: nowrap;
+}
+
+.pagination .page-link:hover {
+background-color: var(--bg-hover);
+border-color: var(--accent-gold);
+color: var(--accent-gold);
+}
+
+.pagination .page-item.active .page-link {
+background-color: var(--accent-gold);
+border-color: var(--accent-gold);
+color: #12141a;
+font-weight: bold;
 }

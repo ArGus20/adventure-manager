@@ -1,9 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ character.character_name }} ({{ character.user.username }})</h1>
-  <p>Gender: {{ character.gender }}</p>
-  <p>Race: {{ character.race }}</p>
-  <p>Class: {{ character.character_class }}</p>
-  <p>{{ character.character_class.description }}</p>
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card custom-dark-card p-4 rounded mb-4">
+        <h1 class="h2 font-weight-bold mb-4 text-center">{{ character.character_name }} ({{ character.user.username }})</h1>
+        <div class="mb-3">
+          <p class="mb-2"><span class="text-muted font-weight-bold">Gender:</span> {{ character.gender }}</p>
+          <p class="mb-2"><span class="text-muted font-weight-bold">Race:</span> {{ character.race }}</p>
+          <p class="mb-2"><span class="text-muted font-weight-bold">Class:</span> {{ character.character_class }}</p>
+        </div>
+
+        <hr class="border-secondary my-3">
+
+        <p class="mb-0 text-muted">{{ character.character_class.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

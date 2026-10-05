@@ -1,16 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ player.username }}</h1>
-  <p>First name: {{ player.first_name }}</p>
-  <p>Last name: {{ player.last_name }}</p>
-  <p>Email: {{ player.email }}</p>
-  <ul>
-    <h3>Characters:</h3>
-    {% for character in player.characters.all %}
-      <li><a href="{% url 'game_manager:character-detail' player_pk=player.id pk=character.id %}">{{ character.character_name }} {{ character.character_class }}</a></li>
-    {% empty %}
-      <p>No Characters!</p>
-    {% endfor %}
-  </ul>
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card custom-dark-card p-4 rounded mb-4">
+        <h1 class="h2 font-weight-bold mb-4 text-center">{{ player.username }}</h1>
+        <div class="mb-3">
+          <p class="mb-1"><span class="text-muted font-weight-bold">First name:</span> {{ player.first_name }}</p>
+          <p class="mb-1"><span class="text-muted font-weight-bold">Last name:</span> {{ player.last_name }}</p>
+          <p class="mb-1"><span class="text-muted font-weight-bold">Email:</span> {{ player.email }}</p>
+        </div>
+
+        <hr class="border-secondary my-3">
+
+        <h3 class="h5 font-weight-bold mb-3 text-warning">Characters:</h3>
+        <div>
+          {% for character in player.characters.all %}
+            <a href="{% url 'game_manager:character-detail' player_pk=player.id pk=character.id %}" class="custom-dark-card d-block p-3 mb-2 rounded text-left text-reset text-decoration-none">
+              {{ character.character_name }} {{ character.character_class }}
+            </a>
+          {% empty %}
+            <p class="text-muted mb-0">No Characters!</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

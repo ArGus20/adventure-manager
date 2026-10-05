@@ -1,12 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Delete Adventure</h1>
-  <p>Are you sure you want to delete {{ adventure }}?</p>
-  <form action="" method="post">
-    {% csrf_token %}
-    <input class="btn btn-primary" type="submit" value="Yes, delete">
-    <a class="btn btn-secondary" href="{% url 'game_manager:adventure-list' %}">Cancel</a>
-  </form>
-
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card custom-dark-card p-4 rounded mb-4 text-center">
+        <h1 class="h2 font-weight-bold mb-3">Delete Adventure</h1>
+        <p class="mb-4">Are you sure you want to delete {{ adventure }}?</p>
+        <form action="" method="post">
+          {% csrf_token %}
+          <div class="d-flex justify-content-center align-items-center">
+            <input class="btn btn-danger font-weight-bold px-4 mr-2" type="submit" value="Yes, delete">
+            <a class="btn btn-secondary px-4" href="{% url 'game_manager:adventure-list' %}">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

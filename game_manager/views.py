@@ -143,7 +143,7 @@ class PlayerListView(generic.ListView):
         return context
 
     def get_queryset(self) -> QuerySet:
-        queryset = User.objects.filter(is_dm=False)
+        queryset = User.objects.filter(is_dm=False, is_superuser=False)
         form = UserUsernameSearchForm(self.request.GET)
 
         if form.is_valid():
