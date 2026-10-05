@@ -10,10 +10,10 @@
     {% endif %}
   </h1>
 
-{#  <form method="get" action="" class="form-inline">#}
-{#    {{ search_form.as_p }}#}
-{#    <input class="btn btn-secondary" type="submit" value="Search">#}
-{#  </form>#}
+  <form method="get" action="" class="form-inline">
+    {{ search_form.as_p }}
+    <input class="btn btn-secondary" type="submit" value="Search">
+  </form>
   {% if adventure_list %}
     <ul>
       {% for adventure in adventure_list %}

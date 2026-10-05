@@ -1,16 +1,20 @@
 {% extends "base.html"%}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <h1>Player List</h1>
 
-{#  <form method="get" action="" class="form-inline">#}
-{#    {{ search_form.as_p }}#}
-{#    <input class="btn btn-secondary" type="submit" value="Search">#}
-{#  </form>#}
+  <form method="get" action="" class="form-inline">
+    {{ search_form|crispy }}
+    <input class="btn btn-secondary" type="submit" value="Search">
+  </form>
   {% if player_list %}
     <ul>
       {% for player in player_list %}
-        <li><a href="{% url 'game_manager:player-detail' pk=player.id %}">{{ player.username }}</a></li>
+        <li>
+            <a href="{% url 'game_manager:player-detail' pk=player.id %}">{{ player.username }}</a>
+            <a href="{% url 'game_manager:manage-player-adventures' pk=player.id %}">Edit / Remove</a>
+        </li>
       {% endfor %}
     </ul>
   {% else %}

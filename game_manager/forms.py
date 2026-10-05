@@ -1,5 +1,3 @@
-from xml.dom import ValidationErr
-
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils import timezone
@@ -24,3 +22,29 @@ class AdventureCreateForm(forms.ModelForm):
             raise ValidationError("It must be future date!")
 
         return start_date
+
+
+class AdventureNameSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by name"
+            }
+        )
+    )
+
+
+class UserUsernameSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by username"
+            }
+        )
+    )

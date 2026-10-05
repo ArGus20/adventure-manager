@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_bootstrap4',
+    'crispy_forms',
     'game_manager',
 ]
 
@@ -134,3 +136,5 @@ MAILERS = {
 AUTH_USER_MODEL = "game_manager.User"
 
 LOGIN_REDIRECT_URL = "/"
+
+CRISPY_TEMPLATE_PACK="bootstrap4"

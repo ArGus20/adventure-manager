@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Add {{ player.username }} to your Adventures</h2>
+  <form method="post">
+    {% csrf_token %}
+    <h3>Your Adventures:</h3>
+    {% for adv in adventures %}
+        <label>
+            <input
+                    type="checkbox"
+                    name="adventures_ids"
+                    value="{{ adv.id }}"
+                    {% if player in adv.players.all %}checked{% endif %}
+            >
+            {{ adv.name }}
+        </label>
+    {% empty %}
+      <p>You have no Adventures!</p>
+    {% endfor %}
+    <br>
+    <button type="submit">Save changer</button>
+    <a href="{% url 'game_manager:player-list' %}">Cancel</a>
+  </form>
+{% endblock %}

@@ -1,12 +1,16 @@
+from lib2to3.fixes.fix_input import context
 from typing import Any
 
-from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import QuerySet
+from django.http import HttpResponse, HttpRequest
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
-from django.views import generic
+from django.views import View, generic
 
-from game_manager.forms import AdventureCreateForm
-from game_manager.models import User, Adventure, CharacterClass, Character
+from game_manager.forms import AdventureCreateForm, AdventureNameSearchForm, UserUsernameSearchForm
+from game_manager.models import User, Adventure, Character
 
 
 class HomePageView(TemplateView):
@@ -25,6 +29,29 @@ class AdventureListView(generic.ListView):
     template_name = "game_manager/adventure_list.html"
     context_object_name = "adventure_list"
 
+    def get_context_data(
+            self,
+            *,
+            object_list=None,
+            **kwargs
+    ) -> dict:
+        context = super(AdventureListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name", "")
+        context["search_form"] = AdventureNameSearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self) -> QuerySet:
+        queryset = Adventure.objects.all()
+        form = AdventureNameSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+        return queryset
+
 
 class AdventureDetailView(generic.DetailView):
     model = Adventure
@@ -35,22 +62,8 @@ class AdventureDetailView(generic.DetailView):
         "players"
     )
 
-    # def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-    #     context = super().get_context_data(**kwargs)
-    #     context["all_users"] = User.objects.exclude(is_dm=True)
-    #     return context
-    #
-    # def post(self, request, *args, **kwargs):
-    #     adventure = self.get_object()
-    #
-    #     if request.user == adventure.master:
-    #         player_ids = request.POST.getlist("player_ids")
-    #
-    #         if player_ids:
-    #             adventure.players.add(*player_ids)
 
-
-class AdventureCreateView(generic.CreateView):
+class AdventureCreateView(LoginRequiredMixin, generic.CreateView):
     model = Adventure
     form_class = AdventureCreateForm
     success_url = reverse_lazy("game_manager:adventure-list")
@@ -61,14 +74,14 @@ class AdventureCreateView(generic.CreateView):
         return super().form_valid(form)
 
 
-class AdventureUpdateView(generic.UpdateView):
+class AdventureUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Adventure
     form_class = AdventureCreateForm
     success_url = reverse_lazy("game_manager:adventure-list")
     template_name = "game_manager/adventure_form.html"
 
 
-class AdventureDeleteView(generic.DeleteView):
+class AdventureDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Adventure
     success_url = reverse_lazy("game_manager:adventure-list")
     template_name = "game_manager/adventure_contifm_delete.html"
@@ -76,9 +89,31 @@ class AdventureDeleteView(generic.DeleteView):
 
 class MasterListView(generic.ListView):
     model = User
-    queryset = User.objects.filter(is_dm=True)
     template_name = "game_manager/master_list.html"
     context_object_name = "master_list"
+
+    def get_context_data(
+            self,
+            *,
+            object_list=None,
+            **kwargs
+    ) -> dict:
+        context = super(MasterListView, self).get_context_data(**kwargs)
+        username = self.request.GET.get("username", "")
+        context["search_form"] = UserUsernameSearchForm(
+            initial={"username": username}
+        )
+        return context
+
+    def get_queryset(self) -> QuerySet:
+        queryset = User.objects.filter(is_dm=True)
+        form = UserUsernameSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return queryset.filter(
+                username__icontains=form.cleaned_data["username"]
+            )
+        return queryset
 
 
 class MasterDetailView(generic.DetailView):
@@ -89,9 +124,31 @@ class MasterDetailView(generic.DetailView):
 
 class PlayerListView(generic.ListView):
     model = User
-    queryset = User.objects.filter(is_dm=False)
     template_name = "game_manager/player_list.html"
     context_object_name = "player_list"
+
+    def get_context_data(
+            self,
+            *,
+            object_list=None,
+            **kwargs
+    ) -> dict:
+        context = super(PlayerListView, self).get_context_data(**kwargs)
+        username = self.request.GET.get("username", "")
+        context["search_form"] = UserUsernameSearchForm(
+            initial={"username": username}
+        )
+        return context
+
+    def get_queryset(self) -> QuerySet:
+        queryset = User.objects.filter(is_dm=False)
+        form = UserUsernameSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return queryset.filter(
+                username__icontains=form.cleaned_data["username"]
+            )
+        return queryset
 
 
 class PlayerDetailView(generic.DetailView):
@@ -109,3 +166,27 @@ class CharacterDetailView(generic.DetailView):
     template_name = "game_manager/character_detail.html"
     context_object_name = "character"
 
+
+class ManagePlayerAdventuresView(LoginRequiredMixin, View):
+    def get(self, request: HttpRequest, pk: int, *args: Any, **kwargs: Any) -> HttpResponse:
+        player = get_object_or_404(User, pk=pk)
+        adventures = Adventure.objects.filter(master=request.user)
+        context = {
+            "player": player,
+            "adventures": adventures
+        }
+
+        return render(request, "game_manager/manage_player_adventures.html", context=context)
+
+    def post(self, request: HttpRequest, pk: int, *args: Any, **kwargs: Any) -> HttpResponse:
+        player = get_object_or_404(User, pk=pk)
+        selected_ids = request.POST.getlist("adventures_ids")
+        master_adventures = Adventure.objects.filter(master=request.user)
+
+        for adventure in master_adventures:
+            adventure.players.remove(player)
+
+        for adventure in master_adventures.filter(id__in=selected_ids):
+            adventure.players.add(player)
+
+        return redirect("game_manager:player-list")
