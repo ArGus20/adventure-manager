@@ -13,7 +13,12 @@
       {% for player in player_list %}
         <li>
             <a href="{% url 'game_manager:player-detail' pk=player.id %}">{{ player.username }}</a>
-            <a href="{% url 'game_manager:manage-player-adventures' pk=player.id %}">Edit / Remove</a>
+            {% if user.is_dm %}
+                <a href="{% url 'game_manager:manage-player-adventures' pk=player.id %}">Edit / Remove</a>
+            {% endif %}
+            {% if user.is_superuser %}
+                <a href="{% url 'game_manager:player-delete' pk=player.id %}">Delete</a>
+            {% endif %}
         </li>
       {% endfor %}
     </ul>

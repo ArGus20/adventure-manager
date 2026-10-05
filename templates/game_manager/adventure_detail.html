@@ -14,7 +14,7 @@
       <li>No players in this adventure yet.</li>
     {% endfor %}
   </ul>
-  {% if user == adventure.master %}
+  {% if user == adventure.master or user.is_superuser %}
     <a href="{% url 'game_manager:adventure-update' pk=adventure.id %}">UPDATE</a>
     <a href="{% url 'game_manager:adventure-delete' pk=adventure.id %}">DELETE</a>
   {% endif %}

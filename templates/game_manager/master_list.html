@@ -11,7 +11,12 @@
   {% if master_list %}
     <ul>
       {% for master in master_list %}
-        <li><a href="{% url 'game_manager:master-detail' pk=master.id %}">{{ master.username }}</a></li>
+        <li>
+          <a href="{% url 'game_manager:master-detail' pk=master.id %}">{{ master.username }}</a>
+          {% if user.is_superuser %}
+            <a href="{% url 'game_manager:player-delete' pk=master.id %}">Delete</a>
+          {% endif %}
+        </li>
       {% endfor %}
     </ul>
   {% else %}

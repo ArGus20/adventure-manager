@@ -1,11 +1,10 @@
-from lib2to3.fixes.fix_input import context
 from typing import Any
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import QuerySet
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic.base import TemplateView
 from django.views import View, generic
 
@@ -28,6 +27,7 @@ class AdventureListView(generic.ListView):
     model = Adventure
     template_name = "game_manager/adventure_list.html"
     context_object_name = "adventure_list"
+    paginate_by = 5
 
     def get_context_data(
             self,
@@ -91,6 +91,7 @@ class MasterListView(generic.ListView):
     model = User
     template_name = "game_manager/master_list.html"
     context_object_name = "master_list"
+    paginate_by = 5
 
     def get_context_data(
             self,
@@ -126,6 +127,7 @@ class PlayerListView(generic.ListView):
     model = User
     template_name = "game_manager/player_list.html"
     context_object_name = "player_list"
+    paginate_by = 5
 
     def get_context_data(
             self,
@@ -155,6 +157,7 @@ class PlayerDetailView(generic.DetailView):
     model = User
     template_name = "game_manager/player_detail.html"
     context_object_name = "player"
+
 
 class CharacterDetailView(generic.DetailView):
     model = Character
@@ -190,3 +193,13 @@ class ManagePlayerAdventuresView(LoginRequiredMixin, View):
             adventure.players.add(player)
 
         return redirect("game_manager:player-list")
+
+
+class UserDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = User
+    template_name = "game_manager/user_confirm_delete.html"
+
+    def get_success_url(self) -> str:
+        if self.object.is_dm:
+            return reverse("game_manager:master-list")
+        return reverse("game_manager:player-list")

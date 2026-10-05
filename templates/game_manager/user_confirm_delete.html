@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Delete User?</h1>
+  <p>Are you sure you want to delete {{ object.username }}?</p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input class="btn btn-primary" type="submit" value="Yes, delete">
+    {% if object.is_dm %}
+      <a class="btn btn-secondary" href="{% url 'game_manager:master-list' %}">Cancel</a>
+    {% else %}
+      <a class="btn btn-secondary" href="{% url 'game_manager:player-list' %}">Cancel</a>
+    {% endif %}
+  </form>
+
+{% endblock %}
