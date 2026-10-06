@@ -1,6 +1,5 @@
 from django.urls import path
 
-from .models import Character
 from .views import (
     HomePageView,
     AdventureListView,

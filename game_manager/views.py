@@ -172,7 +172,7 @@ class CharacterDetailView(generic.DetailView):
 
 class CharacterCreateView(LoginRequiredMixin, generic.CreateView):
   model = Character
-  fields = ["name", "race", "character_class", "bio"]
+  fields = ["character_name", "race", "gender", "character_class"]
   template_name = "game_manager/character_form.html"
 
   def form_valid(self, form):
@@ -189,7 +189,7 @@ class CharacterUpdateView(
     LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
 ):
   model = Character
-  fields = ["name", "race", "character_class", "bio"]
+  fields = ["character_name", "race", "gender", "character_class"]
   template_name = "game_manager/character_form.html"
 
   def test_func(self):
