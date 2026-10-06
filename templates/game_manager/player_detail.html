@@ -14,12 +14,32 @@
 
         <hr class="border-secondary my-3">
 
-        <h3 class="h5 font-weight-bold mb-3 text-warning">Characters:</h3>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3 class="h5 font-weight-bold mb-0 text-warning">Characters:</h3>
+          {% if user == player %}
+            <a href="{% url 'game_manager:character-create' player_pk=player.id %}" class="btn btn-sm btn-warning font-weight-bold">
+              + Create Character
+            </a>
+          {% endif %}
+        </div>
+
         <div>
           {% for character in player.characters.all %}
-            <a href="{% url 'game_manager:character-detail' player_pk=player.id pk=character.id %}" class="custom-dark-card d-block p-3 mb-2 rounded text-left text-reset text-decoration-none">
-              {{ character.character_name }} {{ character.character_class }}
-            </a>
+            <div class="custom-dark-card p-3 mb-2 rounded d-flex justify-content-between align-items-center">
+              <a href="{% url 'game_manager:character-detail' player_pk=player.id pk=character.id %}" class="text-reset text-decoration-none font-weight-bold flex-grow-1 mr-3">
+                {{ character.character_name }} <span class="text-muted font-weight-normal">({{ character.character_class }})</span>
+              </a>
+              {% if user == player %}
+                <div class="d-flex align-items-center">
+                  <a href="{% url 'game_manager:character-update' player_pk=player.id pk=character.id %}" class="btn btn-sm btn-outline-warning mr-2">
+                    Edit
+                  </a>
+                  <a href="{% url 'game_manager:character-delete' player_pk=player.id pk=character.id %}" class="btn btn-sm btn-outline-danger">
+                    Delete
+                  </a>
+                </div>
+              {% endif %}
+            </div>
           {% empty %}
             <p class="text-muted mb-0">No Characters!</p>
           {% endfor %}

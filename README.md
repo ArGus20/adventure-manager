@@ -18,6 +18,7 @@ python manage.py runserver
 ## Features
 
 * Authentication & Roles: Built-in user authentication with distinction between regular players and Dungeon Masters (is_dm).
+* Character Management: Create and customize characters by selecting name, gender, race, and character class.
 * Adventure Organization: Schedule and manage sessions with difficulty ratings, settings, designated Masters, and participating players.
 * Data Customization: Full administrative control over races, character classes, and adventure settings via a powerful admin panel.
 

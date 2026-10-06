@@ -14,7 +14,10 @@ from .views import (
     PlayerDetailView,
     CharacterDetailView,
     ManagePlayerAdventuresView,
-    UserDeleteView
+    UserDeleteView,
+    CharacterCreateView,
+    CharacterUpdateView,
+    CharacterDeleteView,
 )
 
 urlpatterns = [
@@ -32,9 +35,14 @@ urlpatterns = [
 
     path("players/", PlayerListView.as_view(), name="player-list"),
     path("players/<int:pk>/", PlayerDetailView.as_view(), name="player-detail"),
-    path("players/<int:pk>/player-adventures", ManagePlayerAdventuresView.as_view(), name="manage-player-adventures"),
-    path("players/<int:player_pk>/character/<int:pk>", CharacterDetailView.as_view(), name="character-detail"),
     path("players/<int:pk>/delete", UserDeleteView.as_view(), name="player-delete"),
+    path("players/<int:pk>/player-adventures", ManagePlayerAdventuresView.as_view(), name="manage-player-adventures"),
+
+    path("players/<int:player_pk>/character/<int:pk>", CharacterDetailView.as_view(), name="character-detail"),
+    path("players/<int:player_pk>/character/create/", CharacterCreateView.as_view(), name="character-create"),
+    path("players/<int:player_pk>/character/<int:pk>/update/", CharacterUpdateView.as_view(), name="character-update"),
+    path("players/<int:player_pk>/character/<int:pk>/delete/", CharacterDeleteView.as_view(), name="character-delete"),
+
 ]
 
 app_name = "game_manager"

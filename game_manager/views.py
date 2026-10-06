@@ -1,6 +1,6 @@
 from typing import Any
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import QuerySet
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, get_object_or_404, redirect
@@ -168,6 +168,52 @@ class CharacterDetailView(generic.DetailView):
     )
     template_name = "game_manager/character_detail.html"
     context_object_name = "character"
+
+
+class CharacterCreateView(LoginRequiredMixin, generic.CreateView):
+  model = Character
+  fields = ["name", "race", "character_class", "bio"]
+  template_name = "game_manager/character_form.html"
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
+  def get_success_url(self):
+    return reverse(
+        "game_manager:player-detail", kwargs={"pk": self.request.user.pk}
+    )
+
+
+class CharacterUpdateView(
+    LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
+):
+  model = Character
+  fields = ["name", "race", "character_class", "bio"]
+  template_name = "game_manager/character_form.html"
+
+  def test_func(self):
+    return self.get_object().user == self.request.user
+
+  def get_success_url(self):
+    return reverse(
+        "game_manager:player-detail", kwargs={"pk": self.request.user.pk}
+    )
+
+
+class CharacterDeleteView(
+    LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
+):
+  model = Character
+  template_name = "game_manager/character_confirm_delete.html"
+
+  def test_func(self):
+    return self.get_object().user == self.request.user
+
+  def get_success_url(self):
+      return reverse(
+          "game_manager:player-detail", kwargs={"pk": self.request.user.pk}
+      )
 
 
 class ManagePlayerAdventuresView(LoginRequiredMixin, View):
