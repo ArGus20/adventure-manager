@@ -1,0 +1,787 @@
+[
+{
+  "model": "game_manager.characterclass",
+  "pk": 1,
+  "fields": {
+    "name": "Fighter",
+    "description": "A master of martial combat, skilled with a variety of weapons and armor."
+  }
+},
+{
+  "model": "game_manager.characterclass",
+  "pk": 2,
+  "fields": {
+    "name": "Wizard",
+    "description": "A scholarly magic-user capable of manipulating the fabric of reality."
+  }
+},
+{
+  "model": "game_manager.characterclass",
+  "pk": 3,
+  "fields": {
+    "name": "Rogue",
+    "description": "A scoundrel who uses stealth, precision, and trickery to overcome obstacles."
+  }
+},
+{
+  "model": "game_manager.characterclass",
+  "pk": 4,
+  "fields": {
+    "name": "Cleric",
+    "description": "A priestly champion who wields divine magic in service of a higher power."
+  }
+},
+{
+  "model": "game_manager.characterclass",
+  "pk": 5,
+  "fields": {
+    "name": "Paladin",
+    "description": "A holy warrior bound to a sacred oath, smiting foes with radiant power."
+  }
+},
+{
+  "model": "game_manager.characterclass",
+  "pk": 6,
+  "fields": {
+    "name": "Barbarian",
+    "description": "A fierce warrior of primitive background who can enter a battle rage."
+  }
+},
+{
+  "model": "game_manager.characterclass",
+  "pk": 7,
+  "fields": {
+    "name": "Bard",
+    "description": "An inspiring magician whose power echoes the music of creation."
+  }
+},
+{
+  "model": "game_manager.characterclass",
+  "pk": 8,
+  "fields": {
+    "name": "Druid",
+    "description": "A priest of the Old Faith, wielding the powers of nature and adopting animal forms."
+  }
+},
+{
+  "model": "game_manager.characterclass",
+  "pk": 9,
+  "fields": {
+    "name": "Ranger",
+    "description": "A warrior who uses martial prowess and nature magic to combat threats on the edges of civilization."
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$d5lghhMe4d88iHpZeG6TS5$KFRKcRrPxAR+TUVFfDEmuChBVmN8+PHjtii7WEsVpWo=",
+    "last_login": "2026-10-06T07:34:26.176Z",
+    "is_superuser": false,
+    "username": "matthew_dungeon_master",
+    "first_name": "Matthew",
+    "last_name": "Mercer",
+    "email": "dm@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-01T12:00:00Z",
+    "is_dm": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "liam_dungeon_master",
+    "first_name": "Liam",
+    "last_name": "O'Brien",
+    "email": "liam@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-02T12:00:00Z",
+    "is_dm": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "laura_dungeon_master",
+    "first_name": "Laura",
+    "last_name": "Bailey",
+    "email": "laura@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-02T13:00:00Z",
+    "is_dm": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$sA5tTDTUNA8KwUxmVHtdfr$K0dBpPBJIG/jVItLmYYqRsrq7fB3F0uUIMc8NJmNAZc=",
+    "last_login": "2026-10-06T07:09:13.769Z",
+    "is_superuser": false,
+    "username": "travis_player",
+    "first_name": "Travis",
+    "last_name": "Willingham",
+    "email": "travis@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-03T10:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "marisha_player",
+    "first_name": "Marisha",
+    "last_name": "Ray",
+    "email": "marisha@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-03T11:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "taliesin_player",
+    "first_name": "Taliesin",
+    "last_name": "Jaffe",
+    "email": "taliesin@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-03T12:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "sam_player",
+    "first_name": "Sam",
+    "last_name": "Riegel",
+    "email": "sam@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-04T09:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ashley_player",
+    "first_name": "Ashley",
+    "last_name": "Johnson",
+    "email": "ashley@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-04T10:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "brennan_player",
+    "first_name": "Brennan",
+    "last_name": "Mulligan",
+    "email": "brennan@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-05T08:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "emily_player",
+    "first_name": "Emily",
+    "last_name": "Axford",
+    "email": "emily@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-05T09:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "brian_player",
+    "first_name": "Brian",
+    "last_name": "Murphy",
+    "email": "murph@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-05T10:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "zac_player",
+    "first_name": "Zac",
+    "last_name": "Oyama",
+    "email": "zac@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-06T11:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ally_player",
+    "first_name": "Ally",
+    "last_name": "Beardsley",
+    "email": "ally@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-06T12:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "siobhan_player",
+    "first_name": "Siobhan",
+    "last_name": "Thompson",
+    "email": "siobhan@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-07T08:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 15,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "lou_player",
+    "first_name": "Lou",
+    "last_name": "Wilson",
+    "email": "lou@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-07T09:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 16,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$E6T07mZp7YmF$5q67kXm/wV9/V5sE1wYxR8oVnL7F7q7pXmY/V5sE1wY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "anjali_player",
+    "first_name": "Anjali",
+    "last_name": "Bhimani",
+    "email": "anjali@dndcampaign.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-07T10:00:00Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.user",
+  "pk": 17,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$A65QF0a7aOkT0gTskpZ1XY$lo4RANCZcb0pOLUCAhls9qPzc8DAmq0PVCPrf1TQ6WE=",
+    "last_login": "2026-10-06T07:02:24.896Z",
+    "is_superuser": true,
+    "username": "admin.user",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@admin.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-10-05T08:20:50.462Z",
+    "is_dm": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "game_manager.race",
+  "pk": 1,
+  "fields": {
+    "name": "Human"
+  }
+},
+{
+  "model": "game_manager.race",
+  "pk": 2,
+  "fields": {
+    "name": "High Elf"
+  }
+},
+{
+  "model": "game_manager.race",
+  "pk": 3,
+  "fields": {
+    "name": "Mountain Dwarf"
+  }
+},
+{
+  "model": "game_manager.race",
+  "pk": 4,
+  "fields": {
+    "name": "Tiefling"
+  }
+},
+{
+  "model": "game_manager.race",
+  "pk": 5,
+  "fields": {
+    "name": "Halfling"
+  }
+},
+{
+  "model": "game_manager.race",
+  "pk": 6,
+  "fields": {
+    "name": "Dragonborn"
+  }
+},
+{
+  "model": "game_manager.race",
+  "pk": 7,
+  "fields": {
+    "name": "Half-Orc"
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "character_name": "Caleb Widogast",
+    "race": 1,
+    "gender": "male",
+    "character_class": 2
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 2,
+  "fields": {
+    "user": 3,
+    "character_name": "Jester Lavorre",
+    "race": 4,
+    "gender": "female",
+    "character_class": 4
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 3,
+  "fields": {
+    "user": 4,
+    "character_name": "Grog Strongjaw",
+    "race": 3,
+    "gender": "male",
+    "character_class": 6
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 4,
+  "fields": {
+    "user": 5,
+    "character_name": "Keyleth of the Air Ashari",
+    "race": 2,
+    "gender": "female",
+    "character_class": 8
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 5,
+  "fields": {
+    "user": 6,
+    "character_name": "Percy de Rolo",
+    "race": 1,
+    "gender": "male",
+    "character_class": 1
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 6,
+  "fields": {
+    "user": 7,
+    "character_name": "Scanlan Shorthalt",
+    "race": 5,
+    "gender": "male",
+    "character_class": 7
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 7,
+  "fields": {
+    "user": 8,
+    "character_name": "Pike Trickfoot",
+    "race": 5,
+    "gender": "female",
+    "character_class": 4
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 8,
+  "fields": {
+    "user": 9,
+    "character_name": "Evan Kelmp",
+    "race": 1,
+    "gender": "male",
+    "character_class": 2
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 9,
+  "fields": {
+    "user": 10,
+    "character_name": "Moonshine Cybin",
+    "race": 2,
+    "gender": "female",
+    "character_class": 8
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 10,
+  "fields": {
+    "user": 11,
+    "character_name": "Hardwon Surefoot",
+    "race": 3,
+    "gender": "male",
+    "character_class": 1
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 11,
+  "fields": {
+    "user": 12,
+    "character_name": "Gorgug Throgmorton",
+    "race": 7,
+    "gender": "male",
+    "character_class": 6
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 12,
+  "fields": {
+    "user": 13,
+    "character_name": "Kristen Applebees",
+    "race": 1,
+    "gender": "female",
+    "character_class": 4
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 13,
+  "fields": {
+    "user": 14,
+    "character_name": "Adaine Abernant",
+    "race": 2,
+    "gender": "female",
+    "character_class": 2
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 14,
+  "fields": {
+    "user": 15,
+    "character_name": "Fabian Seacaster",
+    "race": 2,
+    "gender": "male",
+    "character_class": 1
+  }
+},
+{
+  "model": "game_manager.character",
+  "pk": 15,
+  "fields": {
+    "user": 16,
+    "character_name": "Fy'ra Rai",
+    "race": 6,
+    "gender": "female",
+    "character_class": 5
+  }
+},
+{
+  "model": "game_manager.adventuresettings",
+  "pk": 1,
+  "fields": {
+    "type": "Forgotten Realms (Faerûn)"
+  }
+},
+{
+  "model": "game_manager.adventuresettings",
+  "pk": 2,
+  "fields": {
+    "type": "Ravenloft (Gothic Horror)"
+  }
+},
+{
+  "model": "game_manager.adventuresettings",
+  "pk": 3,
+  "fields": {
+    "type": "Eberron (Magiteck & Noir)"
+  }
+},
+{
+  "model": "game_manager.adventuresettings",
+  "pk": 4,
+  "fields": {
+    "type": "Planescape (Multiverse & Sigil)"
+  }
+},
+{
+  "model": "game_manager.adventure",
+  "pk": 1,
+  "fields": {
+    "name": "Curse of Strahd",
+    "description": "Under raging storm clouds, Count Strahd von Zarovich stands silhouetted against Castle Ravenloft. The party must venture into the mists of Barovia to destroy the vampire lord.",
+    "added_date": "2026-09-01",
+    "start_date": "2026-10-15",
+    "difficulty": "high",
+    "adventure_setting": 2,
+    "master": 1,
+    "players": [
+      13,
+      3,
+      2,
+      5,
+      4
+    ]
+  }
+},
+{
+  "model": "game_manager.adventure",
+  "pk": 2,
+  "fields": {
+    "name": "Lost Mine of Phandelver",
+    "description": "Escorting mining supplies to Phandalin leads the heroes straight into the clutches of the Black Spider and the long-lost Wave Echo Cave.",
+    "added_date": "2026-09-05",
+    "start_date": "2026-10-20",
+    "difficulty": "low",
+    "adventure_setting": 1,
+    "master": 1,
+    "players": [
+      8,
+      9,
+      7,
+      6
+    ]
+  }
+},
+{
+  "model": "game_manager.adventure",
+  "pk": 3,
+  "fields": {
+    "name": "Tomb of Annihilation",
+    "description": "A death curse rots all resurrected souls across the realm. Heroes brave the dinosaur-infested jungle of Chult to reach Acererak's deadly tomb.",
+    "added_date": "2026-09-10",
+    "start_date": "2026-11-01",
+    "difficulty": "high",
+    "adventure_setting": 1,
+    "master": 2,
+    "players": [
+      13,
+      11,
+      10,
+      12
+    ]
+  }
+},
+{
+  "model": "game_manager.adventure",
+  "pk": 4,
+  "fields": {
+    "name": "Waterdeep: Dragon Heist",
+    "description": "A mad scramble for half a million gold coins hidden beneath the City of Splendors tests cunning, alliances, and city politics.",
+    "added_date": "2026-09-12",
+    "start_date": "2026-11-10",
+    "difficulty": "low",
+    "adventure_setting": 1,
+    "master": 2,
+    "players": [
+      16,
+      2,
+      15,
+      14
+    ]
+  }
+},
+{
+  "model": "game_manager.adventure",
+  "pk": 5,
+  "fields": {
+    "name": "Rime of the Frostmaiden",
+    "description": "Trapped in the bitter, unnatural perpetual winter of Icewind Dale, heroes must uncover secrets buried deep within the Reghed Glacier.",
+    "added_date": "2026-09-18",
+    "start_date": "2026-11-20",
+    "difficulty": "moderate",
+    "adventure_setting": 1,
+    "master": 2,
+    "players": [
+      10,
+      3,
+      7,
+      4
+    ]
+  }
+},
+{
+  "model": "game_manager.adventure",
+  "pk": 6,
+  "fields": {
+    "name": "Out of the Abyss",
+    "description": "Captured by drow and dragged into the Underdark, the party must survive bizarre demon lords corrupting the subterranean depths.",
+    "added_date": "2026-09-22",
+    "start_date": "2026-12-01",
+    "difficulty": "high",
+    "adventure_setting": 1,
+    "master": 3,
+    "players": [
+      8,
+      5,
+      6,
+      12
+    ]
+  }
+},
+{
+  "model": "game_manager.adventure",
+  "pk": 7,
+  "fields": {
+    "name": "Turn of Fortune's Wheel",
+    "description": "Awakening in the City of Doors without memory, characters must cross the infinite planes and the Outlands to restore their distorted fates.",
+    "added_date": "2026-09-25",
+    "start_date": "2026-12-15",
+    "difficulty": "moderate",
+    "adventure_setting": 4,
+    "master": 3,
+    "players": [
+      16,
+      9,
+      11,
+      14
+    ]
+  }
+},
+{
+  "model": "game_manager.adventure",
+  "pk": 8,
+  "fields": {
+    "name": "Test Adventure",
+    "description": "---",
+    "added_date": "2026-10-03",
+    "start_date": "2026-10-04",
+    "difficulty": "moderate",
+    "adventure_setting": 3,
+    "master": 1,
+    "players": []
+  }
+}
+]

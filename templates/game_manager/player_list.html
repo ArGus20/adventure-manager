@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+<div class="container py-4 text-center">
+  <h1 class="h2 mb-4 font-weight-bold">Player List</h1>
+
+  <form method="get" action="" class="form-inline justify-content-center mb-4">
+    {{ search_form|crispy }}
+    <input class="btn btn-secondary ml-2" type="submit" value="Search">
+  </form>
+
+  {% if player_list %}
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="list-group">
+          {% for player in player_list %}
+            <div class="list-group-item custom-dark-card mb-2 rounded d-flex justify-content-between align-items-center">
+              <a href="{% url 'game_manager:player-detail' pk=player.id %}" class="text-reset font-weight-bold text-decoration-none">
+                {{ player.username }}
+              </a>
+              <div class="d-flex align-items-center">
+                {% if user.is_dm %}
+                  <a href="{% url 'game_manager:manage-player-adventures' pk=player.id %}" class="btn btn-sm btn-outline-warning mr-2">
+                    Edit / Remove
+                  </a>
+                {% endif %}
+                {% if user.is_superuser %}
+                  <a href="{% url 'game_manager:player-delete' pk=player.id %}" class="btn btn-sm btn-outline-danger">
+                    Delete
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <p class="text-muted mt-4">There are no Players in Adventure Manager</p>
+  {% endif %}
+</div>
+{% endblock %}

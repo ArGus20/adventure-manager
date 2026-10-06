@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card custom-dark-card p-4 rounded mb-4">
+        <h2 class="h3 font-weight-bold mb-4 text-center">Add {{ player.username }} to your Adventures</h2>
+
+        <form method="post">
+          {% csrf_token %}
+          <h3 class="h5 font-weight-bold mb-3 text-warning">Your Adventures:</h3>
+
+          <div class="mb-3">
+            {% for adv in adventures %}
+              <label class="custom-dark-card p-2 px-3 rounded mb-2 d-flex align-items-center w-100">
+                <input
+                    type="checkbox"
+                    class="mr-2"
+                    name="adventures_ids"
+                    value="{{ adv.id }}"
+                    {% if player in adv.players.all %}checked{% endif %}
+                >
+                {{ adv.name }}
+              </label>
+            {% empty %}
+              <p class="text-muted mb-0">You have no Adventures!</p>
+            {% endfor %}
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center pt-2">
+            <button type="submit" class="btn btn-warning font-weight-bold">Save changer</button>
+            <a href="{% url 'game_manager:player-list' %}" class="btn btn-outline-secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4 text-center">
+  <div class="d-flex justify-content-center align-items-center mb-4">
+    <h1 class="h2 mb-0 font-weight-bold mr-3">Adventure List</h1>
+    {% if user.is_dm %}
+      <a href="{% url 'game_manager:adventure-create' %}" class="btn btn-warning font-weight-bold">
+        Create
+      </a>
+    {% endif %}
+  </div>
+
+  <form method="get" action="" class="form-inline justify-content-center align-items-center mb-4">
+    {% for field in search_form %}
+      {{ field }}
+    {% endfor %}
+    <input class="btn btn-secondary ml-2" type="submit" value="Search">
+  </form>
+
+  {% if adventure_list %}
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div>
+          {% for adventure in adventure_list %}
+            <a href="{% url 'game_manager:adventure-detail' pk=adventure.id %}" class="custom-dark-card d-block p-3 mb-2 rounded text-left text-reset text-decoration-none">
+              {{ adventure.name }} {{ adventure.adventure_setting }}, {{ adventure.start_date }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <p class="text-muted mt-4">There are no Adventures in Game Manager</p>
+  {% endif %}
+</div>
+{% endblock %}

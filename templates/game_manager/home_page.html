@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Home page</title>
+{% endblock %}
+
+{% block content %}
+<div class="container py-4 text-center">
+  <h1 class="display-4 font-weight-bold mb-2">Adventure Manager</h1>
+  <p class="lead text-muted mb-4">Welcome to Dungeons & Dragons Adventure Manager</p>
+
+  <h3 class="text-warning h5 font-weight-bold mb-3">Adventure Manager statistic:</h3>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-4 mb-3">
+      <div class="card stat-card-static custom-dark-card p-3 h-100" style="background-color: #1c212d; border-color: #2b3244;">
+        <div class="card-body p-2">
+          <div class="text-muted small mb-2">Number of players:</div>
+          <div class="h2 font-weight-bold mb-0 text-warning">{{ players_num }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mb-3">
+      <div class="card stat-card-static custom-dark-card p-3 h-100" style="background-color: #1c212d; border-color: #2b3244;">
+        <div class="card-body p-2">
+          <div class="text-muted small mb-2">Number of masters:</div>
+          <div class="h2 font-weight-bold mb-0 text-warning">{{ masters_num }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mb-3">
+      <div class="card stat-card-static custom-dark-card p-3 h-100" style="background-color: #1c212d; border-color: #2b3244;">
+        <div class="card-body p-2">
+          <div class="text-muted small mb-2">Number of adventures:</div>
+          <div class="h2 font-weight-bold mb-0 text-warning">{{ adventures_num }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
